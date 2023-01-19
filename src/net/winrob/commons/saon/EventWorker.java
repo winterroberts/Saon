@@ -14,8 +14,7 @@ public class EventWorker implements Runnable {
 			try {
 				Event next = dispatcher.getNext();
 				if (next == null) continue;
-				dispatcher.propagate(next);
-				if (!next.isCanceled()) next.run();
+				next.dispatchImmediately(dispatcher);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

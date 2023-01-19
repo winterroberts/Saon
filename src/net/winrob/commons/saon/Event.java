@@ -15,6 +15,13 @@ public abstract class Event {
 	
 	public void dispatch(EventDispatcher dispatcher) {
 		dispatcher.enqueue(this);
+		// StackTraceElement trace = Thread.currentThread().getStackTrace()[2];
+		// System.out.println("Dispatching " + (this.getClass().isAnonymousClass() ? this.getClass().getSuperclass().getSimpleName() : this.getClass().getSimpleName()) + " spawned by " + trace.getFileName() + ":" + trace.getLineNumber());
+	}
+	
+	public void dispatchImmediately(EventDispatcher dispatcher) {
+		dispatcher.propagate(this);
+		if (!isCanceled()) run();
 	}
 	
 	protected abstract boolean run();
