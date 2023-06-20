@@ -1,9 +1,19 @@
 package net.winrob.commons.saon;
 
+/**
+ * Executes new queued {@link Event} work dispatched by a delegating {@link EventDispatcher}.
+ * 
+ * @author Winter Roberts
+ */
 public class EventWorker implements Runnable {
 	
 	private EventDispatcher dispatcher;
 
+	/**
+	 * Creates a new event worker.
+	 * 
+	 * @param dispatcher The {@link EventDispatcher} this worker should use to poll new work.
+	 */
 	protected EventWorker(EventDispatcher dispatcher) {
 		this.dispatcher = dispatcher;
 	}
