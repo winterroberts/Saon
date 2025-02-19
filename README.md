@@ -1,2 +1,2 @@
 # Saon
-A Java-based, Threaded Event API
+A threaded event-driven API for Java
